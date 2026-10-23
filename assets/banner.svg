@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060b19" />
+      <stop offset="50%" stop-color="#0b152d" />
+      <stop offset="100%" stop-color="#040814" />
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="rackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Glow & Shadow Filters -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.7" stroke-opacity="0.5" />
+      <circle cx="40" cy="0" r="1.5" fill="#38bdf8" fill-opacity="0.2" />
+    </pattern>
+
+    <style>
+      .blink-green {
+        animation: pulseGreen 1.8s infinite ease-in-out;
+      }
+      .blink-amber {
+        animation: pulseAmber 1.2s infinite ease-in-out;
+      }
+      .blink-cyan {
+        animation: pulseCyan 2.4s infinite ease-in-out;
+      }
+      .flow-packet {
+        animation: dataFlow 4s infinite linear;
+      }
+      .flow-packet-rev {
+        animation: dataFlowRev 3.5s infinite linear;
+      }
+      .glow-pulse {
+        animation: glowCycle 4s infinite alternate ease-in-out;
+      }
+
+      @keyframes pulseGreen {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      @keyframes pulseAmber {
+        0%, 100% { opacity: 0.2; }
+        40%, 60% { opacity: 0.95; }
+      }
+      @keyframes pulseCyan {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; filter: drop-shadow(0 0 6px #38bdf8); }
+      }
+      @keyframes dataFlow {
+        0% { stroke-dashoffset: 160; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes dataFlowRev {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: 160; }
+      }
+      @keyframes glowCycle {
+        0% { opacity: 0.25; transform: scale(0.98); }
+        100% { opacity: 0.55; transform: scale(1.02); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="420" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Subtle Ambient Glow Rings in Background (behind everything) -->
+  <g opacity="0.35">
+    <circle cx="150" cy="80" r="180" fill="#0284c7" filter="url(#softGlow)" opacity="0.2" class="glow-pulse" />
+    <circle cx="1050" cy="340" r="220" fill="#6366f1" filter="url(#softGlow)" opacity="0.25" class="glow-pulse" />
+    <circle cx="600" cy="210" r="280" fill="#0f172a" />
+  </g>
+
+  <!-- Tech Grid Overlay -->
+  <rect width="1200" height="420" rx="16" fill="url(#gridPattern)" />
+
+  <!-- Network Topology Circuit Lines (Background Dynamic Layer) -->
+  <g opacity="0.45" stroke="#38bdf8" stroke-width="1.5" fill="none">
+    <!-- Left Rack Bus Connection -->
+    <path d="M 60 210 L 220 210 L 280 150 L 400 150" stroke-dasharray="6 6" />
+    <!-- Center Backbone -->
+    <path d="M 280 150 L 340 90 L 860 90 L 920 150" stroke-opacity="0.3" />
+    <!-- Right Storage Node Bus -->
+    <path d="M 800 270 L 920 270 L 980 210 L 1140 210" stroke-dasharray="8 6" />
+    <!-- Animated Data Stream Lines -->
+    <path d="M 100 210 L 300 210 L 350 290 L 850 290 L 900 210 L 1100 210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="16 32" class="flow-packet" />
+    <path d="M 1100 150 L 950 150 L 900 90 L 300 90 L 250 150 L 100 150" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="12 24" class="flow-packet-rev" />
+  </g>
+
+  <!-- Decorative Server Rack Silhouette (Left Side) -->
+  <g transform="translate(60, 110)" opacity="0.65">
+    <!-- Rack Frame -->
+    <rect width="130" height="200" rx="6" fill="url(#rackGrad)" stroke="#334155" stroke-width="1.5" />
+    <!-- Drive Bays -->
+    <!-- Bay 1 -->
+    <rect x="10" y="15" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="29" x2="85" y2="29" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="29" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="29" r="3" fill="#38bdf8" class="blink-cyan" />
+    <!-- Bay 2 -->
+    <rect x="10" y="50" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="64" x2="85" y2="64" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="64" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="64" r="3" fill="#f59e0b" class="blink-amber" />
+    <!-- Bay 3 -->
+    <rect x="10" y="85" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="99" x2="85" y2="99" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="99" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="99" r="3" fill="#38bdf8" class="blink-cyan" />
+    <!-- Bay 4 -->
+    <rect x="10" y="120" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="134" x2="85" y2="134" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="134" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="134" r="3" fill="#f59e0b" class="blink-amber" />
+    <!-- Bay 5 - Controller -->
+    <rect x="10" y="155" width="110" height="30" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="0.8" />
+    <text x="22" y="174" fill="#94a3b8" font-family="'Segoe UI', monospace" font-size="9" letter-spacing="1">ZFS POOL 01</text>
+    <circle cx="98" cy="170" r="3.5" fill="#38bdf8" class="blink-cyan" />
+    <circle cx="108" cy="170" r="3.5" fill="#10b981" class="blink-green" />
+  </g>
+
+  <!-- Decorative Storage Controller / ZFS Disk Array (Right Side) -->
+  <g transform="translate(1010, 110)" opacity="0.65">
+    <!-- Rack Frame -->
+    <rect width="130" height="200" rx="6" fill="url(#rackGrad)" stroke="#334155" stroke-width="1.5" />
+    <!-- Bay 1 -->
+    <rect x="10" y="15" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="29" x2="85" y2="29" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="29" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="29" r="3" fill="#38bdf8" class="blink-cyan" />
+    <!-- Bay 2 -->
+    <rect x="10" y="50" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="64" x2="85" y2="64" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="64" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="64" r="3" fill="#10b981" class="blink-green" />
+    <!-- Bay 3 -->
+    <rect x="10" y="85" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="99" x2="85" y2="99" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="99" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="99" r="3" fill="#f59e0b" class="blink-amber" />
+    <!-- Bay 4 -->
+    <rect x="10" y="120" width="110" height="28" rx="3" fill="#0f172a" stroke="#1e293b" />
+    <line x1="20" y1="134" x2="85" y2="134" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+    <circle cx="98" cy="134" r="3" fill="#10b981" class="blink-green" />
+    <circle cx="108" cy="134" r="3" fill="#38bdf8" class="blink-cyan" />
+    <!-- Bay 5 - NVMe Pool -->
+    <rect x="10" y="155" width="110" height="30" rx="3" fill="#1e293b" stroke="#818cf8" stroke-width="0.8" />
+    <text x="20" y="174" fill="#94a3b8" font-family="'Segoe UI', monospace" font-size="9" letter-spacing="1">NVMe-oF FABRIC</text>
+    <circle cx="98" cy="170" r="3.5" fill="#818cf8" class="blink-cyan" />
+    <circle cx="108" cy="170" r="3.5" fill="#10b981" class="blink-green" />
+  </g>
+
+  <!-- High-Tech Central Badge / Shield Accent -->
+  <g transform="translate(600, 72)" text-anchor="middle">
+    <!-- Center Storage Disc Icon -->
+    <circle cx="0" cy="0" r="26" fill="#0f172a" stroke="#38bdf8" stroke-width="2" filter="url(#glowCyan)" />
+    <!-- Inner Spindle Rings -->
+    <circle cx="0" cy="0" r="16" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="6 4" class="flow-packet" />
+    <circle cx="0" cy="0" r="6" fill="#38bdf8" />
+  </g>
+
+  <!-- FOREGROUND CONTENT LAYER (Guaranteed Never Obscured) -->
+  <g filter="url(#textShadow)" text-anchor="middle">
+    <!-- Top Super-Header Category -->
+    <text x="600" y="132" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3.5">
+      ENTERPRISE FILE STORAGE • CLOUD APPLIANCES • HOMELAB OS
+    </text>
+
+    <!-- Main Title -->
+    <text x="600" y="186" fill="url(#primaryGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="0.5">
+      AWESOME NETWORK ATTACHED STORAGE
+    </text>
+
+    <!-- Subtitle -->
+    <text x="600" y="226" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="0.3">
+      Curated Ecosystem of SaaS Cloud NAS, OpenZFS Distros, Self-Hosted Servers &amp; Storage Tools
+    </text>
+
+    <!-- Secondary Tagline -->
+    <text x="600" y="258" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400">
+      Engineered for TrueNAS, OpenMediaVault, Unraid, OpenZFS, MinIO, SMB/NFS &amp; Scale-Out Storage
+    </text>
+  </g>
+
+  <!-- Interactive / Modern Feature Chips &amp; Badges (Pills) in Foreground -->
+  <g transform="translate(600, 310)" text-anchor="middle">
+    <!-- OpenZFS Pill -->
+    <g transform="translate(-320, 0)">
+      <rect x="-65" y="-15" width="130" height="30" rx="15" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" opacity="0.9" />
+      <circle cx="-45" cy="0" r="4" fill="#38bdf8" />
+      <text x="5" y="4.5" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600">OpenZFS</text>
+    </g>
+
+    <!-- Scale-Out NAS Pill -->
+    <g transform="translate(-160, 0)">
+      <rect x="-70" y="-15" width="140" height="30" rx="15" fill="#1e293b" stroke="#818cf8" stroke-width="1.2" opacity="0.9" />
+      <circle cx="-50" cy="0" r="4" fill="#818cf8" />
+      <text x="5" y="4.5" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600">Scale-Out NAS</text>
+    </g>
+
+    <!-- Data Integrity Pill -->
+    <g transform="translate(0, 0)">
+      <rect x="-70" y="-15" width="140" height="30" rx="15" fill="#1e293b" stroke="#10b981" stroke-width="1.2" opacity="0.9" />
+      <circle cx="-50" cy="0" r="4" fill="#10b981" />
+      <text x="5" y="4.5" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600">Data Integrity</text>
+    </g>
+
+    <!-- RAID & Snapshots Pill -->
+    <g transform="translate(160, 0)">
+      <rect x="-72" y="-15" width="144" height="30" rx="15" fill="#1e293b" stroke="#c084fc" stroke-width="1.2" opacity="0.9" />
+      <circle cx="-52" cy="0" r="4" fill="#c084fc" />
+      <text x="5" y="4.5" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600">RAID &amp; Snapshots</text>
+    </g>
+
+    <!-- Homelab & Self-Hosted Pill -->
+    <g transform="translate(325, 0)">
+      <rect x="-70" y="-15" width="140" height="30" rx="15" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2" opacity="0.9" />
+      <circle cx="-50" cy="0" r="4" fill="#f59e0b" />
+      <text x="5" y="4.5" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600">Homelab Ready</text>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Status Bar -->
+  <g transform="translate(600, 380)" text-anchor="middle">
+    <text x="0" y="0" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="11" letter-spacing="1">
+      SMB • NFS • iSCSI • NVMe-oF • S3 OBJECT • BTRFS • MERGERFS • CEPH
+    </text>
+  </g>
+
+  <!-- Border Outline -->
+  <rect width="1200" height="420" rx="16" fill="none" stroke="#334155" stroke-width="1" />
+</svg>
