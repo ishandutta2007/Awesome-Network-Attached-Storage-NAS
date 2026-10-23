@@ -68,6 +68,7 @@ flowchart TD
 - [🛠️ Specialized Non-GitHub & Proprietary Appliances](#️-specialized-non-github--proprietary-appliances)
 - [🏗️ Architectural Buyer's Matrix](#️-architectural-buyers-matrix)
 - [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support & Sponsorship](#-support--sponsorship)
 - [📈 Star History](#-star-history)
 - [📜 Disclaimer](#-disclaimer)
 
@@ -158,6 +159,18 @@ Contributions are warmly welcome! Help keep this Network Attached Storage guide 
 4. 🌟 **Ensure Open-Source additions** include the standardized white social star badge linking to their `/stargazers` endpoint.
 5. 🚀 **Commit your changes**: `git commit -m "feat: add NewStorageTool to directory"`.
 6. 📬 **Submit a Pull Request** with a concise summary of the addition.
+
+---
+
+## 💖 Support & Sponsorship
+
+Thank you for exploring and using this repository! If you find this guide helpful for your homelab architecture, storage engineering, or open-source infrastructure, please consider supporting the project:
+
+- ⭐ **Star this repository** on GitHub to show your appreciation and help others discover it.
+- 🔀 **Fork & Share** it with your colleagues, storage engineers, and homelab community.
+- ☕ **Buy me a coffee / Sponsor**: You can sponsor ongoing maintenance and open-source updates via the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+Thank you for supporting open-source storage engineering! 🙏
 
 ---
 
